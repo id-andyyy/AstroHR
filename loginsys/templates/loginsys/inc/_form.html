@@ -1,0 +1,10 @@
+<div class="login-component">
+    <div class="form-group">
+        {{ field }}
+    </div>
+    {% if fields.errors %}
+        <div class="invalid-feedback">
+            {{ field.errors }}
+        </div>
+    {% endif %}
+</div>

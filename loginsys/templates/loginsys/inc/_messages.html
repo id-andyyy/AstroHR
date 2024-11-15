@@ -1,0 +1,15 @@
+<div class="auth-message">
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'error' %}
+                <div class="alert alert-dismissible alert-danger">
+                    {{ message }}
+                </div>
+            {% else %}
+                <div class="alert alert-dismissible alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
