@@ -10,12 +10,38 @@
           content="">
     <meta name="keywords"
           content="">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap" rel="stylesheet">
     <!-- Main CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'loginsys/loginsys.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'astro_check/css/nullstyle.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'loginsys/css/loginsys.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'astro_check/css/astro_check.css' %}">
     <!-- Title -->
     <title>{{ title }}</title>
 </head>
-<body>
+<body style="background: url('{% static 'loginsys/img/background.png' %}');object-fit: cover">
+{% if request.resolver_match.url_name != 'main' %}
+    <navbar class="navbar">
+        <div class="navbar__content">
+            <div class="navbar__component navbar__start">
+                <img src="{% static 'loginsys/img/logo.jpg' %}" alt="logo" class="navbar__logo">
+            </div>
+            <div class="navbar__component">
+                <div class="navbar__title">AstroHR</div>
+            </div>
+            <div class="navbar__component navbar__profile">
+                {% if user.is_authenticated %}
+                    <div class="navbar__user">@{{ user.username }}</div>
+                    <a class="navbar__btn" href="{% url 'logout' %}">Выйти</a>
+                {% else %}
+                    <a class="navbar__btn" href="{% url 'logout' %}">Войти</a>
+                {% endif %}
+            </div>
+        </div>
+    </navbar>
+{% endif %}
 {% block content %}
 {% endblock %}
 </body>
