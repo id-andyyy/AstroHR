@@ -22,3 +22,6 @@ urlpatterns = [
     path('', include("loginsys.urls")),
     path('', include("astro_check.urls")),
 ]
+
+admin.site.site_header = 'Панель администрирования'
+admin.site.index_title = 'Сервис AstroHR'

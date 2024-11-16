@@ -1,0 +1,11 @@
+#header, .module caption, .module h2 {
+    background: #0f6666;
+}
+
+div.breadcrumbs {
+    background: #083c3c;
+}
+
+#site-name a:link, #site-name a:visited {
+    color: white;
+}
