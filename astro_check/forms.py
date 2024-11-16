@@ -21,7 +21,7 @@ class AstroCheck(forms.Form):
         choices=[(team.id, team.title) for team in Team.objects.all()],
         widget=forms.Select
     )
-    date = forms.ChoiceField(
+    day = forms.ChoiceField(
         label='Дата',
         choices=[(i, i) for i in range(1, 31 + 1)],
         widget=forms.Select
