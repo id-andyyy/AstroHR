@@ -332,7 +332,7 @@ def get_recommendations(team: str, ascendant: list[str]) -> str:
         for zodiac in ascendant:
             text_for_promt += f'{zodiac}, '
         prompt = {
-            "modelUri": "gpt://b1grlda6ilp627tn3aep/yandexgpt-lite",
+            "modelUri": os.environ.get('YANDEXGPT_MODELURI'),
             "completionOptions": {
                 "stream": False,
                 "temperature": 1,
@@ -349,7 +349,7 @@ def get_recommendations(team: str, ascendant: list[str]) -> str:
         url = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"
         headers = {
             "Content-Type": "application/json",
-            "Authorization": "Api-Key AQVN0lOEX4YoHoULHvW4CfHqAYpsfdhz0kgPBGoI"
+            "Authorization": os.environ.get('YANDEXGPT_AUTHORIZATION')
         }
 
         response = requests.post(url, headers=headers, json=prompt)
