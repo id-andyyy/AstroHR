@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 
 from astro_check.forms import AstroCheck
 from astro_check.utils import get_role, get_team, get_asc_num, get_team_compatibility, get_company_compatibility, \
-    get_team_message, get_company_message
+    get_compatibility_message, get_team_ascendant, get_company_ascendant
 from loginsys.views import *
 from django.shortcuts import render
 
@@ -22,9 +22,9 @@ def astro_check(request):
             name = form.cleaned_data['name']
             surname = form.cleaned_data['surname']
             patronymic = form.cleaned_data['patronymic']
-            role = get_role(form.cleaned_data['role'])
+            role_id = int(form.cleaned_data['role_id'])
             email = form.cleaned_data['email']
-            team = get_team(form.cleaned_data['team'])
+            team_id = int(form.cleaned_data['team_id'])
             day = int(form.cleaned_data['day'])
             month = int(form.cleaned_data['month'])
             year = int(form.cleaned_data['year'])
@@ -35,11 +35,11 @@ def astro_check(request):
 
             ascendant = get_asc_num(day, month, year, city, hours, minutes, time_zone)
 
-            team_compatibility = get_team_compatibility(form.cleaned_data['team'], ascendant)
+            team_compatibility = get_team_compatibility(team_id, ascendant)
             company_compatibility = get_company_compatibility(ascendant)
 
-            team_message = get_team_message(ascendant, team_compatibility)
-            company_message = get_company_message(ascendant, company_compatibility)
+            team_message = get_compatibility_message(get_team_ascendant(team_id), ascendant, team_id, team_compatibility)
+            company_message = get_compatibility_message(get_company_ascendant(), ascendant, -1, company_compatibility)
 
             context = {
                 'title': f'Совместимость кандидата {surname} {name}',
@@ -50,8 +50,8 @@ def astro_check(request):
                 'month': month,
                 'year': year,
                 'email': email,
-                'role': form.cleaned_data['role'],
-                'team': form.cleaned_data['team'],
+                'role_id': form.cleaned_data['role_id'],
+                'team_id': form.cleaned_data['team_id'],
                 'ascendant': ascendant,
                 'team_compatibility': team_compatibility,
                 'team_message': team_message,

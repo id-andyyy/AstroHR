@@ -1,10 +1,17 @@
+import json
 import math
 from datetime import timedelta, datetime
 import ssl
 import certifi
+import requests
 from geopy.geocoders import Nominatim
+from dotenv import load_dotenv
+import os
 
 from astro_check.models import Role, Team, Worker
+
+ascendant_list = (
+    'Овен', 'Телец', 'Близнецы', 'Рак', 'Лев', 'Дева', 'Весы', 'Скорпион', 'Стрелец', 'Козерог', 'Водолей', 'Рыбы')
 
 
 def get_role(role_id: int) -> str:
@@ -232,9 +239,59 @@ def get_company_compatibility(ascendant: int) -> int:
     return round(compatibility)
 
 
-def get_team_message(ascendant: int, team_compatibility: int) -> str:
-    return
+def get_ascendant_titles(team_workers) -> list[str]:
+    return list(set([ascendant_list[worker.ascendant - 1] for worker in team_workers]))
 
 
-def get_company_message(ascendant: int, company_compatibility: int) -> str:
-    return
+def get_team_ascendant(team_id: int) -> list[str]:
+    team_workers = Worker.objects.filter(team=team_id)
+    team_ascendant = get_ascendant_titles(team_workers)
+
+    return team_ascendant
+
+
+def get_company_ascendant() -> list[str]:
+    workers = Worker.objects.all()
+    company_ascendant = get_ascendant_titles(workers)
+
+    return company_ascendant
+
+
+def get_compatibility_message(team_ascendant, ascendant, team_id, compatibility):
+    load_dotenv()
+
+    ascendant = ascendant_list[ascendant - 1]
+    if team_id == -1:
+        team = ''
+    else:
+        team = get_team(team_id)
+    text_for_prompt = ''
+    for zodiac in team_ascendant:
+        text_for_prompt += f'{zodiac}, '
+    prompt = {
+        "modelUri": os.environ.get('YANDEXGPT_MODELURI'),
+        "completionOptions": {
+            "stream": False,
+            "temperature": 0.6,
+            "maxTokens": "2000"
+        },
+        "messages": [
+            {
+                "role": "user",
+                "text": f"Мы - большая компания разработчиков, которая делится на команды. У нас в команде '{team}' {text_for_prompt}. К нам хочет присоединиться человек с асцендентом в {ascendant}. Совместимость с коллективом составляет {compatibility}%. Дай краткий, структурированный отчет, стоит ли принимать этого человека в команду. Выбери один из следующих пунктов в зависимости от значения процента совместимости, который равен {compatibility}%: 1. Если совместимость 75% и больше — напиши 'Рекомендуется принять' и опиши плюсы добавления этого человека, опираясь на взаимодействие знаков асцендента. Например, как люди с асцендентом в разных знаках гармонируют в рабочем темпе, подходах или коммуникации. 2. Если совместимость от 50% до 75% — напиши 'Можно принять' и укажи возможные трудности в коллективе на основе знаков асцендента, а также преимущества, которые он может принести. 3. Если совместимость от 25% до 50% — напиши 'Не рекомендуется принимать, но можно с особыми условиями', обозначь основные причины, почему брать или не брать человека в коллектив, опираясь на представленные асценденты. 4. Если совместимость меньше 25% — напиши 'Не рекомендуется принимать' и кратко объясни, почему этот человек не подойдет в команду, основываясь на знаках асцендента. Укажи рекомендации максимально лаконично и четко, избегая лишней информации. Не забывай, что ты пишешь не про знаки зодиака, а про асценденты в разных знаках."
+            }
+        ]
+    }
+
+    url = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"
+    headers = {
+        "Content-Type": "application/json",
+        "Authorization": os.environ.get('YANDEXGPT_AUTHORIZATION')
+    }
+
+    response = requests.post(url, headers=headers, json=prompt)
+    result = response.text
+    data = json.loads(result)
+    text = data['result']['alternatives'][0]['message']['text'].replace('*', '')
+
+    return text

@@ -10,13 +10,13 @@ class AstroCheck(forms.Form):
     name = forms.CharField(label='Имя', max_length=100)
     surname = forms.CharField(label='Фамилия', max_length=100)
     patronymic = forms.CharField(label='Отчество', max_length=100)
-    role = forms.ChoiceField(
+    role_id = forms.ChoiceField(
         label='Должность',
         choices=[(role.id, role.title) for role in Role.objects.all()],
         widget=forms.Select
     )
     email = forms.EmailField(label='Почта')
-    team = forms.ChoiceField(
+    team_id = forms.ChoiceField(
         label='Команда',
         choices=[(team.id, team.title) for team in Team.objects.all()],
         widget=forms.Select
