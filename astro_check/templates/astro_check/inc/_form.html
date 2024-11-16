@@ -1,0 +1,13 @@
+<div class="astrocheck-body__input astrocheck-input">
+    <div class="astrocheck-input__label">
+        {{ field.label }}
+    </div>
+    <div class="astrocheck-input__input">
+        {{ field }}
+    </div>
+    {% if fields.errors %}
+        <div class="invalid-feedback">
+            {{ field.errors }}
+        </div>
+    {% endif %}
+</div>

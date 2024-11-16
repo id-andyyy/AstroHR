@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'loginsys.apps.LoginsysConfig',
     'astro_check.apps.AstroCheckConfig'
 ]

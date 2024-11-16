@@ -14,7 +14,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90dvh;
+    min-height: 90dvh;
 }
 
 .navbar {
@@ -22,6 +22,7 @@ body {
     width: 100%;
     background-color: #0f6666;
     display: block;
+    margin-bottom: 30px;
 }
 
 .navbar__content {
@@ -59,6 +60,11 @@ body {
     text-decoration: none;
     color: white;
     font-weight: 600;
+    transition: all .5s;
+}
+
+.navbar__btn:hover {
+    background-color: #ff9928;
 }
 
 .navbar__user {
@@ -74,4 +80,57 @@ body {
 .navbar__start img {
     max-height: 100%;
     border-radius: 10px;
+}
+
+.astrocheck {
+    background-color: white;
+    padding: 30px 65px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border: #ff9928 solid 3px;
+}
+
+.astrocheck__heading {
+    font-size: 30px;
+    font-weight: 700;
+    color: #f25430;
+    margin-bottom: 30px;
+}
+
+.astrocheck-input__label {
+    color: black;
+    margin-bottom: 8px;
+}
+
+.astrocheck-input__input input {
+    border-radius: 15px;
+    padding: 10px 20px;
+    min-width: 250px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.astrocheck-input {
+    margin-bottom: 20px;
+}
+
+.astrocheck-input__input input {
+    border: #ff9928 solid 2px;
+}
+
+.astrocheck-input__input select {
+    padding: 10px 20px;
+    background-color: #0f6666;
+    color: white;
+    border-radius: 15px;
+}
+
+.astrocheck__btn {
+    padding: 10px 20px;
+    border-radius: 15px;
+    background-color: #f25430;
+    color: white;
+    font-size: 18px;
+    transition: all .5s;
+    margin-bottom: 5px;
 }

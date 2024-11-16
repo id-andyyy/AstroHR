@@ -1,4 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-    Успех
+    <div class="container">
+        <div class="center">
+            <section class="astrocheck">
+                {% if user.is_authenticated %}
+                    <h1 class="astrocheck__heading">Проверить совместимость кандидата с компанией</h1>
+                {% else %}
+                    <h1 class="astrocheck__heading">Проверить совместимость свою совместимость с компанией</h1>
+                {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {% include "astro_check/inc/_form.html" %}
+                    {% endfor %}
+                    <button type="submit" class="astrocheck__btn">Отправить</button>
+                </form>
+            </section>
+        </div>
+    </div>
 {% endblock %}
