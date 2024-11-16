@@ -9,7 +9,7 @@ class Worker(models.Model):
     email = models.EmailField(verbose_name='почта')
     role = models.ForeignKey('Role', on_delete=models.PROTECT, verbose_name='роль')
     team = models.ForeignKey('Team', on_delete=models.PROTECT, verbose_name='команда')
-    ascendant = models.IntegerField(verbose_name='асцендент', blank=True, null=True)
+    ascendant = models.IntegerField(verbose_name='асцендент')
     team_compatibility = models.IntegerField(verbose_name='совместимость с командой')
     company_compatibility = models.IntegerField(verbose_name='совместимость с компанией')
     data_joined = models.DateField(auto_now_add=True, verbose_name='дата присоединения')

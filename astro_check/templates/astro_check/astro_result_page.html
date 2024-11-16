@@ -1,7 +1,40 @@
 {% extends 'base.html' %}
 {% block content %}
-    {{ team_compatibility }} <br>
-    {{ company_compatibility }} <br>
-    {{ team_message }} <br>
-    {{ company_message }}
+    <div class="container">
+        <div class="center">
+            <section class="astrocheck">
+                <h1 class="astrocheck__result">Кандидат {{ surname }} {{ name }} {{ patronymic }}</h1>
+                <div class="astrocheck__description">Асцендент в знаке {{ ascendant_text }}</div>
+                <div class="astrocheck__block">
+                    <h2 class="astrocheck__title">Совместимость с компанией</h2>
+                    <div class="astrocheck__value">{{ team_compatibility }}%</div>
+                    <div class="astrocheck__text">{{ team_message }}</div>
+                </div>
+                <div class="astrocheck__block">
+                    <h2 class="astrocheck__title">Совместимость с командой</h2>
+                    <div class="astrocheck__value">{{ company_compatibility }}%</div>
+                    <div class="astrocheck__text">{{ company_message }}</div>
+                </div>
+                <div class="astrocheck__block">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="astrocheck__checkbox">
+                            <label for="checkbox_field" class="checkbox_field">
+                                <input type="checkbox" id="checkbox_field" name="checkbox_field" value="1">Оповестить
+                                кандидата
+                            </label>
+                        </div>
+                        <div class="astrocheck__check">
+                            <button type="submit" class="astrocheck__checkbtn astrocheck__btn_confirm" name="second_form" value="confirm">
+                                Одобрить
+                            </button>
+                            <button type="submit" class="astrocheck__checkbtn astrocheck__btn_decline" name="second_form" value="decline">
+                                Отклонить
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
 {% endblock %}

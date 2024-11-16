@@ -5,7 +5,7 @@ from .models import Worker, Role, Team
 
 @admin.register(Worker)
 class MemberAdmin(admin.ModelAdmin):
-    list_display = ['name', 'surname', 'patronymic', 'role', 'team', 'team_compatibility']
+    list_display = ['surname', 'name', 'patronymic', 'role', 'team', 'team_compatibility']
     list_display_links = ['name', 'surname', 'patronymic']
     ordering = ['-data_joined']
     list_filter = ['role__title', 'team__title']

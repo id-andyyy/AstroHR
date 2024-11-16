@@ -187,23 +187,40 @@ def get_compatibility(ascendant_1: int, ascendant_2: int) -> int:
         },
         7: {
             7: 98,
+            8: -90,
+            9: 93,
+            10: -79,
+            11: 92,
+            12: 88,
         },
         8: {
             8: 88,
+            9: -17,
+            10: -28,
+            11: -36,
+            12: 91,
         },
         9: {
             9: 88,
+            10: 0,
+            11: 89,
+            12: -15,
         },
         10: {
             10: 100,
+            11: 0,
+            12: 92,
         },
         11: {
             11: 75,
+            12: -32,
         },
         12: {
             12: 100,
         },
     }
+
+    print(ascendant_1, ascendant_2)
 
     if ascendant_1 > ascendant_2:
         ascendant_1, ascendant_2 = ascendant_2, ascendant_1
@@ -257,41 +274,48 @@ def get_company_ascendant() -> list[str]:
     return company_ascendant
 
 
+def get_ascendant_name(ascendant: int) -> str:
+    return ascendant_list[ascendant - 1]
+
+
 def get_compatibility_message(team_ascendant, ascendant, team_id, compatibility):
     load_dotenv()
 
-    ascendant = ascendant_list[ascendant - 1]
-    if team_id == -1:
-        team = ''
-    else:
-        team = get_team(team_id)
-    text_for_prompt = ''
-    for zodiac in team_ascendant:
-        text_for_prompt += f'{zodiac}, '
-    prompt = {
-        "modelUri": os.environ.get('YANDEXGPT_MODELURI'),
-        "completionOptions": {
-            "stream": False,
-            "temperature": 0.6,
-            "maxTokens": "2000"
-        },
-        "messages": [
-            {
-                "role": "user",
-                "text": f"Мы - большая компания разработчиков, которая делится на команды. У нас в команде '{team}' {text_for_prompt}. К нам хочет присоединиться человек с асцендентом в {ascendant}. Совместимость с коллективом составляет {compatibility}%. Дай краткий, структурированный отчет, стоит ли принимать этого человека в команду. Выбери один из следующих пунктов в зависимости от значения процента совместимости, который равен {compatibility}%: 1. Если совместимость 75% и больше — напиши 'Рекомендуется принять' и опиши плюсы добавления этого человека, опираясь на взаимодействие знаков асцендента. Например, как люди с асцендентом в разных знаках гармонируют в рабочем темпе, подходах или коммуникации. 2. Если совместимость от 50% до 75% — напиши 'Можно принять' и укажи возможные трудности в коллективе на основе знаков асцендента, а также преимущества, которые он может принести. 3. Если совместимость от 25% до 50% — напиши 'Не рекомендуется принимать, но можно с особыми условиями', обозначь основные причины, почему брать или не брать человека в коллектив, опираясь на представленные асценденты. 4. Если совместимость меньше 25% — напиши 'Не рекомендуется принимать' и кратко объясни, почему этот человек не подойдет в команду, основываясь на знаках асцендента. Укажи рекомендации максимально лаконично и четко, избегая лишней информации. Не забывай, что ты пишешь не про знаки зодиака, а про асценденты в разных знаках."
-            }
-        ]
-    }
+    try:
+        ascendant = get_ascendant_name(ascendant - 1)
+        if team_id == -1:
+            team = ''
+        else:
+            team = get_team(team_id)
+        text_for_prompt = ''
+        for zodiac in team_ascendant:
+            text_for_prompt += f'{zodiac}, '
+        prompt = {
+            "modelUri": os.environ.get('YANDEXGPT_MODELURI'),
+            "completionOptions": {
+                "stream": False,
+                "temperature": 0.6,
+                "maxTokens": "2000"
+            },
+            "messages": [
+                {
+                    "role": "user",
+                    "text": f"Мы - большая компания разработчиков, которая делится на команды. У нас в команде '{team}' {text_for_prompt}. К нам хочет присоединиться человек с асцендентом в {ascendant}. Совместимость с коллективом составляет {compatibility}%. Дай краткий, структурированный отчет, стоит ли принимать этого человека в команду. Выбери один из следующих пунктов в зависимости от значения процента совместимости, который равен {compatibility}%: 1. Если совместимость от 50% до 100% — напиши 'Рекомендуется принять.' и опиши плюсы добавления этого человека, опираясь на взаимодействие знаков асцендента. Например, как люди с асцендентом в разных знаках гармонируют в рабочем темпе, подходах или коммуникации. 2. Если совместимость от 0% до 50% — напиши 'Можно принять.' и укажи возможные трудности в коллективе на основе знаков асцендента, а также преимущества, которые он может принести. 3. Если совместимость от -50% до 0% — напиши 'Не рекомендуется принимать, но можно с особыми условиями.', обозначь основные причины, почему брать или не брать человека в коллектив, опираясь на представленные асценденты. 4. Если совместимость от -50% до -100% — напиши 'Не рекомендуется принимать.' и кратко объясни, почему этот человек не подойдет в команду, основываясь на знаках асцендента. Укажи рекомендации максимально лаконично и четко, избегая лишней информации. Не забывай, что ты пишешь не про знаки зодиака, а про асценденты в разных знаках."
+                }
+            ]
+        }
 
-    url = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"
-    headers = {
-        "Content-Type": "application/json",
-        "Authorization": os.environ.get('YANDEXGPT_AUTHORIZATION')
-    }
+        url = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": os.environ.get('YANDEXGPT_AUTHORIZATION')
+        }
 
-    response = requests.post(url, headers=headers, json=prompt)
-    result = response.text
-    data = json.loads(result)
-    text = data['result']['alternatives'][0]['message']['text'].replace('*', '')
+        response = requests.post(url, headers=headers, json=prompt)
+        result = response.text
+        data = json.loads(result)
+        text = data['result']['alternatives'][0]['message']['text'].replace('*', '')
+    except:
+        text = ''
 
     return text

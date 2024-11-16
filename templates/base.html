@@ -26,7 +26,9 @@
     <navbar class="navbar">
         <div class="navbar__content">
             <div class="navbar__component navbar__start">
-                <img src="{% static 'loginsys/img/logo.jpg' %}" alt="logo" class="navbar__logo">
+                <a href="{% url 'main' %}">
+                    <img src="{% static 'loginsys/img/logo.jpg' %}" alt="logo" class="navbar__logo">
+                </a>
             </div>
             <div class="navbar__component">
                 <a href="{% url 'main' %}" class="navbar__title">AstroHR</a>

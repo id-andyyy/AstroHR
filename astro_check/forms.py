@@ -7,8 +7,8 @@ from astro_check.models import Role, Team
 
 
 class AstroCheck(forms.Form):
-    name = forms.CharField(label='Имя', max_length=100)
     surname = forms.CharField(label='Фамилия', max_length=100)
+    name = forms.CharField(label='Имя', max_length=100)
     patronymic = forms.CharField(label='Отчество', max_length=100)
     role_id = forms.ChoiceField(
         label='Должность',
@@ -28,8 +28,9 @@ class AstroCheck(forms.Form):
     )
     month = forms.ChoiceField(
         label='Месяц',
-        choices=[(i + 1, month) for i, month in enumerate(['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь',
-                 'Ноябрь', 'Декабрь'])],
+        choices=[(i + 1, month) for i, month in enumerate(
+            ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь',
+             'Ноябрь', 'Декабрь'])],
         widget=forms.Select
     )
     year = forms.ChoiceField(
