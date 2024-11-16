@@ -1,4 +1,5 @@
 from datetime import date
+from lib2to3.fixes.fix_input import context
 
 from django.contrib.auth.decorators import login_required
 
@@ -177,4 +178,8 @@ def custom_400(request, exception):
 
 
 def custom_500(request):
-    return render(request, 'astro_check/404.html', status=500)
+    return render(request, 'astro_check/error.html', status=500)
+
+
+def custom_504(request):
+    return render(request, 'astro_check/error.html', status=504)

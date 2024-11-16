@@ -8,6 +8,7 @@
     align-items: center;
     gap: 20px;
     padding: 30px 65px;
+    animation: fadeIn 0.5s ease-out forwards;
 }
 
 .login__header {

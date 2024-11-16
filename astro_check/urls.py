@@ -5,5 +5,5 @@ urlpatterns = [
     path('', main, name='main'),
     path('astro_check/', astro_check, name='astro_check'),
     path('generate/', generate, name='generate'),
-    path('team/', team, name='generate'),
+    path('team/', team, name='team'),
 ]

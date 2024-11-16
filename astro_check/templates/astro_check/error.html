@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <div class="center">
+            <section class="error">
+                <h1 class="error__heading">Упс! Непредвиденная ошибка!</h1>
+                <div class="error__description">Давайте попробуем сначала</div>
+                <a href="{% url 'main' %}" class="error__btn">Вернуться на главную</a>
+            </section>
+        </div>
+    </div>
+{% endblock %}

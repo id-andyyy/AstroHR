@@ -1,4 +1,47 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-    Главная
+    <div class="header">
+        <h1>AstroHR</h1>
+    </div>
+    <div class="main-container fade-in">
+        <a href="{% url 'astro_check' %}" class="tile fade-in"
+           style="background-image: url('{% static "astro_check/img/back.png" %}')">
+            {% if user.is_authenticated %}
+                <h2>Проверить совместимость кандидата</h2>
+                <div class="tile-placeholder">Рассчитайте совместимость кандидата с существующим коллективом по
+                    натальной карте
+                </div>
+            {% else %}
+                <h2>Проверить свою совместимость</h2>
+                <div class="tile-placeholder">Рассчитайте вашу совместимость с существующим коллективом по натальной
+                    карте
+                </div>
+            {% endif %}
+        </a>
+        <a href="{% url 'team' %}" class="tile fade-in"
+           style="background-image: url('{% static "astro_check/img/back.png" %}')">
+            <h2>Посмотреть совместимость компании</h2>
+            <div class="tile-placeholder">Изучите совместимость коллег в компании для лучшего опыта совместной
+                коммуникации
+            </div>
+        </a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'generate' %}" class="tile fade-in"
+               style="background-image: url('{% static "astro_check/img/back.png" %}')">
+                <h2>Сгенерировать рекомендации</h2><br><br>
+                <div class="tile-placeholder">Сгенерируйте рекомендации для каждой команды на основе знаков асцендента
+                </div>
+            </a>
+        {% endif %}
+    </div>
+
+    <div class="user-panel fade-in">
+        {% if user.is_authenticated %}
+            <div class="username">@{{ user.username }}</div>
+            <a class="logout-button" href="{% url 'logout' %}">Выйти</a>
+        {% else %}
+            <a class="logout-button" href="{% url 'login' %}">Войти</a>
+        {% endif %}
+    </div>
 {% endblock %}

@@ -1,0 +1,125 @@
+.header {
+    padding: 20px;
+    background-color: #F25430;
+    width: 500px;
+    margin: 20px auto;
+    text-align: center;
+    border-radius: 15px;
+    color: white;
+}
+
+.header h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+/* Основное содержимое */
+.main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+.tile {
+    background-size: contain;
+    color: #fff;
+    border-radius: 20px;
+    padding: 20px 40px 40px;
+    width: 400px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, filter 0.3s ease;
+}
+
+.tile:hover {
+    transform: scale(1.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    background-color: rgba(242, 84, 48, 0.8);
+    filter: brightness(1.2);
+}
+
+.tile h2 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    align-self: flex-start;
+    transition: transform 0.3s ease;
+}
+
+.tile:hover h2 {
+    transform: translateY(-5px);
+}
+
+.tile-placeholder {
+    color: white;
+    margin-top: 40px;
+    transition: color 0.3s ease;
+    font-size: 25px;
+}
+
+.tile:hover .tile-placeholder {
+    color: #fff;
+}
+
+.user-panel {
+    width: 220px;
+    background-color: #FF9929;
+    border-radius: 30px;
+    padding: 10px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px auto 0;
+    min-height: 75px;
+}
+
+.username {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.logout-button {
+    background-color: #F25430;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 30px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #0f6666;
+    transform: scale(1.05);
+}
+
+/* Анимация */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
