@@ -1,0 +1,134 @@
+.basa {
+    width: 100%;
+    height: calc(100vh - 60px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0; /* Изначально скрыт */
+    animation: fadeIn 0.5s ease-out forwards; /* Анимация появления */
+}
+
+/* === Пустая панель === */
+.panel-container {
+    width: 80%;
+    max-width: 1200px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: #F25430;
+    opacity: 0; /* Изначально скрыта */
+    animation: fadeIn 0.5s ease-out forwards; /* Анимация появления */
+    animation-delay: 0.2s; /* Уменьшена задержка */
+}
+
+/* Заголовок панели */
+.panel-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Название команды */
+.team-name {
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Селектор команды */
+.team-selector {
+    font-size: 18px;
+    margin-bottom: 20px;
+    align-self: flex-start;
+}
+
+select {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Таблица совместимости */
+.compatibility-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    border-radius: 20px;
+    overflow: hidden;
+    opacity: 0; /* Изначально скрыта */
+    animation: fadeIn 0.5s ease-out forwards; /* Анимация появления */
+    animation-delay: 0.4s; /* Уменьшена задержка */
+}
+
+.compatibility-table th,
+.compatibility-table td {
+    padding: 15px;
+    border: none;
+}
+
+.compatibility-table th {
+    background-color: #0E6666;
+    color: white;
+    font-weight: bold;
+}
+
+.compatibility-table td {
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* === Кнопка выбора команды === */
+.apply-button {
+    padding: 12px 20px;
+    background-color: #0E6666;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 5px;
+    transition: all .5s;
+}
+
+.apply-button:hover {
+    background-color: #ff9928;
+}
+
+/* === Анимация появления === */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.team-input__input select {
+    padding: 10px 20px;
+    border-radius: 15px;
+    background-color: white;
+    margin-right: 20px;
+}
+
+.team-input {
+    display: inline-block;
+}
+.team-worker th {
+    background-color: white;
+    color: black;
+    font-weight: 400;
+}

@@ -7,7 +7,7 @@ from astro_check.mail import email_go
 from astro_check.models import Worker
 from astro_check.utils import get_asc_num, get_team_compatibility, get_company_compatibility, \
     get_compatibility_message, get_team_ascendant, get_company_ascendant, get_ascendant_name, get_recommendations, \
-    get_team, get_ascendant_titles
+    get_team
 from django.shortcuts import render, redirect
 
 
@@ -127,13 +127,11 @@ def astro_check(request):
 def generate(request):
     context = {
         'title': 'Генерация рекомендаций',
-        'generated': False,
     }
     if request.method == 'POST':
         form = Generate(request.POST)
         if form.is_valid():
             team_id = form.cleaned_data['team_id']
-            context['generated'] = True
             context.update({'recommendations': get_recommendations(get_team(team_id), get_team_ascendant(team_id))})
             context.update({'form': form})
             return render(request, 'astro_check/generate_page.html', context)
@@ -143,3 +141,40 @@ def generate(request):
         context.update({'form': form})
 
     return render(request, 'astro_check/generate_page.html', context)
+
+
+def team(request):
+    context = {
+        'title': 'Совместимость в команде',
+    }
+    if request.method == 'POST':
+        form = Generate(request.POST)
+        if form.is_valid():
+            team_id = form.cleaned_data['team_id']
+            team_workers = Worker.objects.filter(team_id=team_id)
+            workers = [{
+                'name': worker.name,
+                'surname': worker.surname,
+                'patronymic': worker.patronymic,
+                'role_text': worker.role.title,
+                'team_compatibility': worker.team_compatibility,
+            } for worker in team_workers]
+            context.update({'form': form, 'workers': workers})
+            return render(request, 'astro_check/team_page.html', context)
+    else:
+        form = Generate(request.POST)
+        context.update({'form': form})
+
+    return render(request, 'astro_check/team_page.html', context)
+
+
+def custom_404(request, exception):
+    return render(request, 'astro_check/404.html', status=404)
+
+
+def custom_400(request, exception):
+    return render(request, 'astro_check/404.html', status=400)
+
+
+def custom_500(request):
+    return render(request, 'astro_check/404.html', status=500)

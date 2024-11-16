@@ -25,3 +25,7 @@ urlpatterns = [
 
 admin.site.site_header = 'Панель администрирования'
 admin.site.index_title = 'Сервис AstroHR'
+
+handler404 = 'astro_check.views.custom_404'
+handler400 = 'astro_check.views.custom_400'
+handler500 = 'astro_check.views.custom_500'
