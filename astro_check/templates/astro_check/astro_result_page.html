@@ -8,12 +8,12 @@
                 <div class="astrocheck__block">
                     <h2 class="astrocheck__title">Совместимость с компанией</h2>
                     <div class="astrocheck__value">{{ team_compatibility }}%</div>
-                    <div class="astrocheck__text">{{ team_message }}</div>
+                    <div class="astrocheck__text">{{ team_message|safe }}</div>
                 </div>
                 <div class="astrocheck__block">
                     <h2 class="astrocheck__title">Совместимость с командой</h2>
                     <div class="astrocheck__value">{{ company_compatibility }}%</div>
-                    <div class="astrocheck__text">{{ company_message }}</div>
+                    <div class="astrocheck__text">{{ company_message|safe }}</div>
                 </div>
                 <div class="astrocheck__block">
                     <form method="POST">

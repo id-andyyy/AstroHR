@@ -1,5 +1,6 @@
 import json
 import math
+import re
 from datetime import timedelta, datetime
 import ssl
 import certifi
@@ -314,7 +315,11 @@ def get_compatibility_message(team_ascendant, ascendant, team_id, compatibility)
         response = requests.post(url, headers=headers, json=prompt)
         result = response.text
         data = json.loads(result)
-        text = data['result']['alternatives'][0]['message']['text'].replace('*', '')
+        text = data['result']['alternatives'][0]['message']['text']
+
+        text = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', text)
+
+        text = text.replace('*', '')
     except:
         text = ''
 
@@ -351,6 +356,11 @@ def get_recommendations(team: str, ascendant: list[str]) -> str:
         result = response.text
         data = json.loads(result)
         text = data['result']['alternatives'][0]['message']['text']
+
+        text = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', text)
+        text = re.sub(r'(\d+\.)', r'<br> \1', text)
+
+        text = text.replace('*', '')
     except:
         text = 'Произошла ошибка при генерации рекомендаций. Попробуйте позднее или свяжитесь с администратором сайта.'
     return text
