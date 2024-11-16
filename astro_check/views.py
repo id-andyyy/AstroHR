@@ -18,7 +18,6 @@ def main(request):
     return render(request, 'astro_check/main.html', context)
 
 
-@login_required
 def astro_check(request):
     context = {
         'title': 'Проверка на совместимость',
@@ -79,41 +78,42 @@ def astro_check(request):
         else:
             context.update({'form': form})
     elif request.method == 'POST' and 'second_form' in request.POST:
-        name = request.session['name']
-        surname = request.session['surname']
-        patronymic = request.session['patronymic']
-        ascendant = request.session['ascendant']
-        role_id = request.session['role_id']
-        team_id = request.session['team_id']
-        email = request.session['email']
-        day = request.session['day']
-        month = request.session['month']
-        year = request.session['year']
-        team_compatibility = request.session['team_compatibility']
-        company_compatibility = request.session['company_compatibility']
+        if request.user.is_authenticated:
+            name = request.session['name']
+            surname = request.session['surname']
+            patronymic = request.session['patronymic']
+            ascendant = request.session['ascendant']
+            role_id = request.session['role_id']
+            team_id = request.session['team_id']
+            email = request.session['email']
+            day = request.session['day']
+            month = request.session['month']
+            year = request.session['year']
+            team_compatibility = request.session['team_compatibility']
+            company_compatibility = request.session['company_compatibility']
 
-        pressed_button = request.POST.get('second_form')
-        checkbox_value = request.POST.get('checkbox_field', None)
+            pressed_button = request.POST.get('second_form')
+            checkbox_value = request.POST.get('checkbox_field', None)
 
-        if pressed_button == 'confirm':
-            Worker(
-                name=name,
-                surname=surname,
-                patronymic=patronymic,
-                date_of_birth=date(year, month, day),
-                email=email,
-                role_id=role_id,
-                team_id=team_id,
-                ascendant=ascendant,
-                team_compatibility=team_compatibility,
-                company_compatibility=company_compatibility
-            ).save()
+            if pressed_button == 'confirm':
+                Worker(
+                    name=name,
+                    surname=surname,
+                    patronymic=patronymic,
+                    date_of_birth=date(year, month, day),
+                    email=email,
+                    role_id=role_id,
+                    team_id=team_id,
+                    ascendant=ascendant,
+                    team_compatibility=team_compatibility,
+                    company_compatibility=company_compatibility
+                ).save()
 
-            if checkbox_value:
-                email_go(True, email, f'{name} {surname}')
-        else:
-            if checkbox_value:
-                email_go(False, email, f'{name} {surname}')
+                if checkbox_value:
+                    email_go(True, email, f'{name} {surname}')
+            else:
+                if checkbox_value:
+                    email_go(False, email, f'{name} {surname}')
 
         return redirect('astro_check')
     else:

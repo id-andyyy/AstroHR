@@ -15,24 +15,31 @@
                     <div class="astrocheck__value">{{ company_compatibility }}%</div>
                     <div class="astrocheck__text">{{ company_message|safe }}</div>
                 </div>
-                <div class="astrocheck__block">
-                    <form method="POST">
-                        {% csrf_token %}
-                        <div class="astrocheck__checkbox">
-                            <label for="checkbox_field" class="checkbox_field">
-                                <input type="checkbox" id="checkbox_field" name="checkbox_field" value="1">Отправить кандидату email
-                            </label>
-                        </div>
-                        <div class="astrocheck__check">
-                            <button type="submit" class="astrocheck__checkbtn astrocheck__btn_confirm" name="second_form" value="confirm">
-                                Одобрить
-                            </button>
-                            <button type="submit" class="astrocheck__checkbtn astrocheck__btn_decline" name="second_form" value="decline">
-                                Отклонить
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                {% if user.is_authenticated %}
+                    <div class="astrocheck__block">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="astrocheck__checkbox">
+                                <label for="checkbox_field" class="checkbox_field">
+                                    <input type="checkbox" id="checkbox_field" name="checkbox_field" value="1">Отправить
+                                    кандидату email
+                                </label>
+                            </div>
+                            <div class="astrocheck__check">
+                                <button type="submit" class="astrocheck__checkbtn astrocheck__btn_confirm"
+                                        name="second_form"
+                                        value="confirm">
+                                    Одобрить
+                                </button>
+                                <button type="submit" class="astrocheck__checkbtn astrocheck__btn_decline"
+                                        name="second_form"
+                                        value="decline">
+                                    Отклонить
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                {% endif %}
             </section>
         </div>
     </div>

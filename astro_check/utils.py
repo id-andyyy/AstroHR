@@ -359,6 +359,7 @@ def get_recommendations(team: str, ascendant: list[str]) -> str:
 
         text = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', text)
         text = re.sub(r'(\d+\.)', r'<br> \1', text)
+        text = re.sub(r'(?<!<br>)\s-\s', r'<br> - ', text)
 
         text = text.replace('*', '')
     except:
