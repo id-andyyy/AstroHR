@@ -1,0 +1,15 @@
+.generate__heading {
+    color: #0f6666;
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.generate__btn {
+    margin-bottom: 30px;
+}
+
+.generated {
+    line-height: 20px;
+}

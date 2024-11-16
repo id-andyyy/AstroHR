@@ -54,3 +54,11 @@ class AstroCheck(forms.Form):
         widget=forms.Select
     )
     city = forms.CharField(label='Город рождения', max_length=100)
+
+
+class Generate(forms.Form):
+    team_id = forms.ChoiceField(
+        label='Выберите команду',
+        choices=[(team.id, team.title) for team in Team.objects.all()],
+        widget=forms.Select
+    )

@@ -95,6 +95,7 @@ body {
     font-weight: 700;
     color: #f25430;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 .astrocheck-input__label {
@@ -133,6 +134,11 @@ body {
     font-size: 18px;
     transition: all .5s;
     margin-bottom: 5px;
+    width: 100%;
+}
+
+.astrocheck__btn:hover {
+    background-color: #ff9928;
 }
 
 .astrocheck__result {

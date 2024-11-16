@@ -2,11 +2,12 @@ from datetime import date
 
 from django.contrib.auth.decorators import login_required
 
-from astro_check.forms import AstroCheck
+from astro_check.forms import AstroCheck, Generate
 from astro_check.mail import email_go
 from astro_check.models import Worker
 from astro_check.utils import get_asc_num, get_team_compatibility, get_company_compatibility, \
-    get_compatibility_message, get_team_ascendant, get_company_ascendant, get_ascendant_name
+    get_compatibility_message, get_team_ascendant, get_company_ascendant, get_ascendant_name, get_recommendations, \
+    get_team, get_ascendant_titles
 from django.shortcuts import render, redirect
 
 
@@ -124,4 +125,21 @@ def astro_check(request):
 
 @login_required()
 def generate(request):
+    context = {
+        'title': 'Генерация рекомендаций',
+        'generated': False,
+    }
+    if request.method == 'POST':
+        form = Generate(request.POST)
+        if form.is_valid():
+            team_id = form.cleaned_data['team_id']
+            context['generated'] = True
+            context.update({'recommendations': get_recommendations(get_team(team_id), get_team_ascendant(team_id))})
+            context.update({'form': form})
+            return render(request, 'astro_check/generate_page.html', context)
+
+    else:
+        form = Generate(request.POST)
+        context.update({'form': form})
+
     return render(request, 'astro_check/generate_page.html', context)

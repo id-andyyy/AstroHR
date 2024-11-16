@@ -1,3 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
+    <div class="container">
+        <div class="center">
+            <section class="astrocheck">
+                <h1 class="astrocheck__heading">Генерация рекомендаций</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        {% include "astro_check/inc/_form.html" %}
+                    {% endfor %}
+                    <button type="submit" class="astrocheck__btn generate__btn">Сгенерировать</button>
+                </form>
+                {% if generated %}
+                    <div class="recommendations">
+                        <h2 class="generate__heading">Рекомендации</h2>
+                        <div class="generated">
+                            {{ recommendations }}
+                        </div>
+                    </div>
+                {% endif %}
+            </section>
+        </div>
+    </div>
 {% endblock %}

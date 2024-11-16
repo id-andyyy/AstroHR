@@ -319,3 +319,38 @@ def get_compatibility_message(team_ascendant, ascendant, team_id, compatibility)
         text = ''
 
     return text
+
+
+def get_recommendations(team: str, ascendant: list[str]) -> str:
+    try:
+        text_for_promt = ''
+        for zodiac in ascendant:
+            text_for_promt += f'{zodiac}, '
+        prompt = {
+            "modelUri": "gpt://b1grlda6ilp627tn3aep/yandexgpt-lite",
+            "completionOptions": {
+                "stream": False,
+                "temperature": 1,
+                "maxTokens": "2000"
+            },
+            "messages": [
+                {
+                    "role": "user",
+                    "text": f"В команде {team}, где работают люди со следующими знаками в асценденте: {text_for_promt}, можно улучшить следующие моменты, опираясь на их асценденты и натальную карту: 1. Подумай о том, как можно улучшить взаимодействие внутри команды, используя сильные стороны сотрудников, характерные для знаков их асцендентов. Например, кто-то лучше справляется с аналитикой, а кто-то с креативными задачами — перераспределите роли. 2. Обрати внимание на зоны стресса и конфликта: обеспечьте комфортную среду для обсуждения идей и обратной связи, чтобы все могли раскрыть свой потенциал. Не забывай, что ты пишешь НЕ ПРО ЗНАКИ ЗОДИАКА, а про АСЦЕНДЕНТЫ в знаках зодиака. Не использую markdown разметку."
+                }
+            ]
+        }
+
+        url = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": "Api-Key AQVN0lOEX4YoHoULHvW4CfHqAYpsfdhz0kgPBGoI"
+        }
+
+        response = requests.post(url, headers=headers, json=prompt)
+        result = response.text
+        data = json.loads(result)
+        text = data['result']['alternatives'][0]['message']['text']
+    except:
+        text = 'Произошла ошибка при генерации рекомендаций. Попробуйте позднее или свяжитесь с администратором сайта.'
+    return text
