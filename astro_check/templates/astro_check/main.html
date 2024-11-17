@@ -21,7 +21,7 @@
         </a>
         <a href="{% url 'team' %}" class="tile fade-in"
            style="background-image: url('{% static "astro_check/img/back.png" %}')">
-            <h2>Посмотреть совместимость компании</h2>
+            <h2>Посмотреть совместимость в компании</h2>
             <div class="tile-placeholder">Изучите совместимость коллег в компании для лучшего опыта совместной
                 коммуникации
             </div>
@@ -35,7 +35,6 @@
             </a>
         {% endif %}
     </div>
-
     <div class="user-panel fade-in">
         {% if user.is_authenticated %}
             <div class="username">@{{ user.username }}</div>

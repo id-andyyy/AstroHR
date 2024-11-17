@@ -2,14 +2,16 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <meta name="yandex-verification" content="">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="{% static 'loginsys/img/logo.jpg' %}" rel="icon">
     <!-- Description -->
     <meta name="description"
-          content="">
+          content="Узнайте свою совместимость с сотрудниками компании по натальной карте и получите персональные рекомендации!">
     <meta name="keywords"
-          content="">
+          content="mojarung, натальная карта, астрология, карты таро, космограмма, naimix, hr, it, трудоустройство, гадание, расклады, резюме, gpt, yandexgpt">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +28,32 @@
     <title>{{ title }}</title>
 </head>
 <body style="background: url('{% static 'loginsys/img/background.png' %}');object-fit: cover">
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+        m[i] = m[i] || function () {
+            (m[i].a = m[i].a || []).push(arguments)
+        };
+        m[i].l = 1 * new Date();
+        for (var j = 0; j < document.scripts.length; j++) {
+            if (document.scripts[j].src === r) {
+                return;
+            }
+        }
+        k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })
+    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+    ym(0, "init", {
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true
+    });
+</script>
+<noscript>
+    <div><img src="https://mc.yandex.ru/watch/97095430" style="position:absolute; left:-9999px;" alt=""></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
 {% if request.resolver_match.url_name != 'main' %}
     <navbar class="navbar">
         <div class="navbar__content">
