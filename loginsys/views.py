@@ -14,7 +14,7 @@ def user_login(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('astro_check')
+            return redirect('main')
         else:
             form = UserLoginForm()
             messages.error(request, 'Пользователь не найден')
