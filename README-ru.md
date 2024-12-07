@@ -3,6 +3,7 @@
 ![GitHub Created At](https://img.shields.io/github/created-at/id-andyyy/AstroHR?style=flat&color=F25430)
 ![Lines Of Code](https://tokei.rs/b1/github/id-andyyy/AstroHR?style=flat&category=code&color=006666)
 ![Top Language](https://img.shields.io/github/languages/top/id-andyyy/AstroHR?style=flat)
+![Website](https://img.shields.io/website?url=https%3A%2F%2Fastrohr.pythonanywhere.com%2F)
 
 # AstroHR&nbsp;&#128302;
 
