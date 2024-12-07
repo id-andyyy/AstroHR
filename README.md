@@ -57,6 +57,15 @@ To calculate compatibility, each person's ascendant is calculated through the `g
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&duration=2500&color=F7F7F7&background=000000&multiline=true&width=625&height=165&lines=git+clone+https%3A%2F%2Fgithub.com%2Fid-andyyy%2FAstroHR.git;cd+AstroHR;pip+install+-r+requirements.txt;python+manage.py+migrate;python+manage.py+createsuperuser;python+manage.py+runserver)](https://git.io/typing-svg)
 
+```sh
+git clone https://github.com/id-andyyy/AstroHR.git
+cd AstroHR
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+```
+
 For the project to work correctly, you need to create a `.env` file in the root directory and fill it according to the `.env.example` file, replacing placeholders with secret keys.
 
 ## Feedback
