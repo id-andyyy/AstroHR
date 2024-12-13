@@ -76,10 +76,10 @@ I would appreciate if you could give a star&nbsp;&#11088;. If you found a bug or
 
 Development team [Mojarung](https://t.me/mojarung):
 
-- [Andrey Obrezkov](https://github.com/id-andyyy) (fullstack developer)
-- [Vladislav Politsyn](https://t.me/wasbyy7) (frontend developer)
-- [Yaroslav Roldugin](https://github.com/Felicuss) (backend developer)
-- [Alina Zueva](https://github.com/ZuevaAlinam) (astrologist)
-- [Kirill Veriyalov](https://github.com/verikirill) (deployment assistant)
+- [Andrey Obrezkov](https://github.com/id-andyyy) (Fullstack developer)
+- [Vladislav Politsyn](https://t.me/wasbyy7) (Frontend developer)
+- [Yaroslav Roldugin](https://github.com/Felicuss) (Backend developer)
+- [Alina Zueva](https://github.com/ZuevaAlinam) (Astrologist)
+- [Kirill Veriyalov](https://github.com/verikirill) (Deployment specialist)
 
 Read in [Russian&nbsp;&#127479;&#127482;](README-ru.md)
