@@ -55,7 +55,7 @@ To calculate compatibility, each person's ascendant is calculated through the `g
 
 ## Getting Started
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&duration=2500&color=F7F7F7&background=000000&multiline=true&width=625&height=165&lines=git+clone+https%3A%2F%2Fgithub.com%2Fid-andyyy%2FAstroHR.git;cd+AstroHR;pip+install+-r+requirements.txt;python+manage.py+migrate;python+manage.py+createsuperuser;python+manage.py+runserver)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&duration=2500&color=F7F7F7&background=000000&multiline=true&width=650&height=165&lines=%25+git+clone+https%3A%2F%2Fgithub.com%2Fid-andyyy%2FAstroHR.git;%25+cd+AstroHR;%25+pip+install+-r+requirements.txt;%25+python+manage.py+migrate;%25+python+manage.py+createsuperuser;%25+python+manage.py+runserver)](https://git.io/typing-svg)
 
 ```sh
 git clone https://github.com/id-andyyy/AstroHR.git
@@ -72,7 +72,7 @@ For the project to work correctly, you need to create a `.env` file in the root 
 
 I would appreciate if you could give a star&nbsp;&#11088;. If you found a bug or have suggestions for improvement, please use the [Issues](https://github.com/id-andyyy/AstroHR/issues) section.
 
-## Authors
+## Team
 
 Development team [Mojarung](https://t.me/mojarung):
 
