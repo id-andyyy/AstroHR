@@ -82,4 +82,4 @@ Development team [Mojarung](https://t.me/mojarung):
 - [Alina Zueva](https://github.com/ZuevaAlinam) (Astrologist)
 - [Kirill Veriyalov](https://github.com/verikirill) (Deployment specialist)
 
-Читать на [русском&nbsp;&#127479;&#127482;](README-ru.md)
+Читать на [русском&nbsp;&#127479;&#127482;](README.md)
