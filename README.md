@@ -83,4 +83,4 @@ python manage.py runserver
 - [Алина Зуева](https://github.com/ZuevaAlinam) (Astrologist)
 - [Кирилл Вериялов](https://github.com/verikirill) (Deployment specialist)
 
-Read in [English&nbsp;&#127468;&#127463;](README.md)
+Read in [English&nbsp;&#127468;&#127463;](README-en.md)
