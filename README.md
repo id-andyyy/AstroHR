@@ -1,32 +1,32 @@
-![Art](https://i.postimg.cc/yNFLmgXK/art.png)
+![Арт](https://i.postimg.cc/yNFLmgXK/art.png)
 
 ![GitHub Created At](https://img.shields.io/github/created-at/id-andyyy/AstroHR?style=flat&color=F25430)
-![Lines Of Code](https://tokei.rs/b1/github/id-andyyy/AstroHR?style=flat&category=code&color=006666)
+![](https://tokei.rs/b1/github/id-andyyy/AstroHR?style=flat&category=code&color=006666)
 ![Top Language](https://img.shields.io/github/languages/top/id-andyyy/AstroHR?style=flat)
-![Website](https://img.shields.io/website?url=https%3A%2F%2Fastrohr.pythonanywhere.com%2F)
+![Namix Code](https://img.shields.io/badge/hackathon-namix_code-blue?color=white)
 
 # AstroHR&nbsp;&#128302;
 
-A tool for analyzing employee compatibility in a company based on a natal chart&nbsp;&#127775;. Created as part of the [Namix Code&nbsp;&#128104;&#8205;&#128187;](https://naimixcode.ru/) hackathon.
+Сайт для оценивания совместимости сотрудников компании&nbsp;&#127775;. Создан в рамках хакатона [Namix Code&nbsp;&#128104;&#8205;&#128187;](https://naimixcode.ru/).
 
-## Description
+## Описание
 
-A tool for HR specialists and recruiters that allows evaluating the compatibility of candidates, colleagues, employees, and subordinates based on astrological data and natal charts.&nbsp;&#10024;
+Инструмент для HR-специалистов и рекрутеров, позволяющий оценивать совместимость кандидатов, коллег, сотрудников и подчинённых на основе астрологических данных и натальной карты.&nbsp;&#10024;
 
-Website sections:
+Разделы сайта:
 
-- &#127968; Home (login for HR specialists, buttons to navigate to other sections)
-- &#129309; Compatibility Check (requires entering personal data, including date and place of birth to get compatibility results with the company. HR specialist can approve a candidate by sending them an email with the result)
-- &#127775; Team Compatibility (view compatibility results between employees from different departments)
-- &#128161; Recommendation Generation (get advice on improving interaction between employees based on compatibility results - available only to HR specialists)
+- &#127968; Главная (вход для HR-специалистов, кнопки для перехода к другим разделам)
+- &#129309; Проверка совместимости (требуется ввести свои данные, в том числе дату и место рождения для получения результата совместимости с компанией. HR-специалист может одобрить кандидата, отправив ему письмо с результатом)
+- &#127775; Совместимость внутри команды (просмотр результатов совместимости между сотрудниками разных отделов)
+- &#128161; Генерация рекомендаций (получение советов по улучшению взаимодействия между сотрудниками на основе результатов совместимости - доступно только HR-специалистам)
 
-## Demo
+## Демонстрация
 
-Visit the [website](https://astrohr.pythonanywhere.com/) or watch the demo (click on the image)&nbsp;&#128071;
+Посетите [сайт](https://astrohr.pythonanywhere.com/) или посмотрите демонстрацию (клик на картинку)&nbsp;&#128071;
 
-[![Preview](https://i.postimg.cc/jSkbp1G2/preview.png)](https://youtu.be/2M027cCYfWM)
+[![Превью](https://i.postimg.cc/jSkbp1G2/preview.png)](https://youtu.be/2M027cCYfWM)
 
-## Technologies and Tools
+## Технологии и инструменты
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffffff)
 ![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white&color=013b2a)
@@ -38,22 +38,22 @@ Visit the [website](https://astrohr.pythonanywhere.com/) or watch the demo (clic
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white&color=#6CeA8C)
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white&color=f14e32)
 
-Development features:
+Особенности разработки:
 
-- Project was written in three days during the [Namix Code&nbsp;&#128104;&#8205;&#128187;](https://naimixcode.ru/) hackathon
-- Django framework used
-- SQLite database
-- YandexGPT neural network used for recommendation generation
-- Responsive design
-- BEM methodology
-- Additional libraries used for determining birthplace coordinates
-- Meta tags and Yandex.Metrica configured
+- Проект написан за три дня в рамках хакатона [Namix Code&nbsp;&#128104;&#8205;&#128187;](https://naimixcode.ru/)
+- Использован фреймворк Django
+- База данных на SQLite
+- Для генерации рекомендаций использована нейросеть YandexGPT
+- Адаптивная верстка
+- БЭМ-методология
+- Использование дополнительных библиотек для определения координат места рождения
+- Настроены мета-теги и Яндекс.Метрика
 
-## Functionality Implementation
+## Реализация функционала
 
-To calculate compatibility, each person's ascendant is calculated through the `get_asc_num()` function using date, time, and place of birth. Then ascendants are compared through `get_compatibility()`, where compatibility matrix has values from -100 to +100 for each pair of signs. When checking candidate's compatibility with the team, the system compares their ascendant with all team members, calculating the average value, and generates hiring recommendations based on this.
+Для расчета совместимости для каждого человека вычисляется его асцендент через функцию `get_asc_num()`, используя дату, время и место рождения. Затем происходит сравнение асцендентов через `get_compatibility()`, где в матрице совместимости для каждой пары знаков заданы значения от -100 до +100. При проверке совместимости кандидата с командой система сравнивает его асцендент со всеми членами команды, вычисляя среднее значение, и на основе этого генерирует рекомендации по найму.
 
-## Getting Started
+## Начало работы
 
 [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&duration=2500&color=F7F7F7&background=000000&multiline=true&width=650&height=165&lines=%25+git+clone+https%3A%2F%2Fgithub.com%2Fid-andyyy%2FAstroHR.git;%25+cd+AstroHR;%25+pip+install+-r+requirements.txt;%25+python+manage.py+migrate;%25+python+manage.py+createsuperuser;%25+python+manage.py+runserver)](https://git.io/typing-svg)
 
@@ -66,20 +66,21 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-For the project to work correctly, you need to create a `.env` file in the root directory and fill it according to the `.env.example` file, replacing placeholders with secret keys.
+Для корректной работы проекта в корне необходимо создать файл `.env` и заполнить его в соответствии с файлом `.env.example`, заменяя заглушки секретными ключами.
 
-## Feedback
+## Обратная связь
 
-I would appreciate if you could give a star&nbsp;&#11088;. If you found a bug or have suggestions for improvement, please use the [Issues](https://github.com/id-andyyy/AstroHR/issues) section.
+Буду признателен, если вы поставите звезду&nbsp;&#11088;. Если вы нашли баг или у вас есть предложения по улучшению,
+используйте раздел [Issues](https://github.com/id-andyyy/AstroHR/issues).
 
-## Team
+## Команда
 
-Development team [Mojarung](https://t.me/mojarung):
+Команда разработчиков [Mojarung](https://t.me/mojarung):
 
-- [Andrey Obrezkov](https://github.com/id-andyyy) (Fullstack developer)
-- [Vladislav Politsyn](https://t.me/wasbyy7) (Frontend developer)
-- [Yaroslav Roldugin](https://github.com/Felicuss) (Backend developer)
-- [Alina Zueva](https://github.com/ZuevaAlinam) (Astrologist)
-- [Kirill Veriyalov](https://github.com/verikirill) (Deployment specialist)
+- [Андрей Обрезков](https://github.com/id-andyyy) (Fullstack developer)
+- [Владислав Полицын](https://t.me/wasbyy7) (Frontend developer)
+- [Ярослав Ролдугин](https://github.com/Felicuss) (Backend developer)
+- [Алина Зуева](https://github.com/ZuevaAlinam) (Astrologist)
+- [Кирилл Вериялов](https://github.com/verikirill) (Deployment specialist)
 
-Read in [Russian&nbsp;&#127479;&#127482;](README-ru.md)
+Read in [English&nbsp;&#127468;&#127463;](README.md)
